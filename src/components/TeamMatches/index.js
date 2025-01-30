@@ -1,6 +1,8 @@
 // Write your code here
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
+import {Link} from 'react-router-dom'
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
@@ -16,7 +18,6 @@ const apiContentResponse = {
 class TeamMatches extends Component {
   state = {
     teamPlayList: {},
-    isLoading: true,
     status: apiContentResponse.initially,
   }
 
@@ -65,6 +66,36 @@ class TeamMatches extends Component {
   successView = () => {
     const {teamPlayList} = this.state
     const {teamBannerUrl, latestMatchDetails, recentMatches} = teamPlayList
+    let totalWin = 0
+    let totalLost = 0
+    let totalDraw = 0
+    recentMatches.map(each => {
+      if (each.match_status === 'Won') {
+        totalWin += 1
+      } else if (each.match_status === 'Lost') {
+        totalLost += 1
+      } else {
+        totalDraw += 1
+      }
+    })
+
+    const data = [
+      {
+        id: 1,
+        count: totalWin,
+        text: 'WON',
+      },
+      {
+        id: 2,
+        count: totalLost,
+        text: 'LOST',
+      },
+      {
+        id: 3,
+        count: totalDraw,
+        text: 'DRAW',
+      },
+    ]
 
     return (
       <div className="teamMatch-container">
@@ -82,6 +113,44 @@ class TeamMatches extends Component {
               <MatchCard recentMatches={each} key={each.id} />
             ))}
           </ul>
+        </div>
+        <PieChart width={1000} height={300}>
+          <Pie
+            cx="70%"
+            cy="40%"
+            data={data}
+            startAngle={0}
+            endAngle={360}
+            innerRadius="40%"
+            outerRadius="70%"
+            dataKey="count"
+          >
+            <Cell
+              name={`WON - ${data.find(each => each.id === 1)?.count}`}
+              fill="#fecba6"
+            />
+            <Cell
+              name={`LOST - ${data.find(each => each.id === 2)?.count}`}
+              fill="#b3d23f"
+            />
+            <Cell
+              name={`DRAW - ${data.find(each => each.id === 3)?.count}`}
+              fill="white"
+            />
+          </Pie>
+          <Legend
+            iconType="circle"
+            layout="vertical"
+            verticalAlign="middle"
+            align="middle"
+          />
+        </PieChart>
+        <div className="backButton-container">
+          <Link to="/">
+            <button type="button" className="backButton">
+              Back
+            </button>
+          </Link>
         </div>
       </div>
     )
