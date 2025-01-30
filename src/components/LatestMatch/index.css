@@ -1,0 +1,17 @@
+/* Write your CSS here */
+.latest-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-wrap: wrap; */
+}
+.latest-details-left {
+  text-align: left;
+}
+.latest-details-right {
+  text-align: right;
+}
+.latestmatchlogo {
+  width: 50%;
+}

@@ -1,0 +1,20 @@
+/* Write your CSS here */
+.list-container {
+  border: 2px inset #ffffff;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  background-color: #ffffff33;
+  width: 300px;
+}
+.teamName {
+  width: 35px;
+  margin-right: 10px;
+}

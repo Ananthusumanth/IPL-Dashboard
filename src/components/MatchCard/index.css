@@ -1,0 +1,40 @@
+/* Write your CSS here */
+.Recentteamlogo {
+  width: 25%;
+}
+.recent-list-container {
+  background-color: #0f172a;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  margin-left: 5px;
+  width: 25%;
+  padding: 10px;
+}
+.red-color {
+  color: red;
+  font-weight: bold;
+}
+.green-color {
+  color: green;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .recent-list-container {
+    background-color: #0f172a;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    margin-left: 5px;
+    width: 45%;
+    padding: 10px;
+  }
+}
