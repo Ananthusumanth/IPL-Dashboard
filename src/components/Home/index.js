@@ -17,10 +17,10 @@ class Home extends Component {
 
   componentDidMount() {
     this.setState({status: apiContentResponse.in_progress})
-    this.getDetails()
+    this.teamsApiUrl()
   }
 
-  getDetails = async () => {
+  teamsApiUrl = async () => {
     const response = await fetch('https://apis.ccbp.in/ipl')
     if (response.ok) {
       const data = await response.json()
@@ -85,6 +85,8 @@ class Home extends Component {
         return this.isFailedView()
       case apiContentResponse.success:
         return this.successView()
+      default:
+        return this.loadingView()
     }
   }
 

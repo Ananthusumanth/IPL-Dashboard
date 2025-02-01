@@ -23,10 +23,10 @@ class TeamMatches extends Component {
 
   componentDidMount() {
     this.setState({status: apiContentResponse.in_progress})
-    this.getteamPlayList()
+    this.teamMatchesApiUrl()
   }
 
-  getteamPlayList = async () => {
+  teamMatchesApiUrl = async () => {
     const {match} = this.props
     const {params} = match
     const {id} = params
@@ -69,7 +69,7 @@ class TeamMatches extends Component {
     let totalWin = 0
     let totalLost = 0
     let totalDraw = 0
-    recentMatches.map(each => {
+    recentMatches.forEach(each => {
       if (each.match_status === 'Won') {
         totalWin += 1
       } else if (each.match_status === 'Lost') {
@@ -103,10 +103,7 @@ class TeamMatches extends Component {
           <img src={teamBannerUrl} alt="team banner" className="banner" />
           <p>Latest Matches</p>
           <div className="latest-matchdiv">
-            <LatestMatch
-              latestmatchDetails={latestMatchDetails}
-              key={latestMatchDetails.id}
-            />
+            <LatestMatch latestmatchDetails={latestMatchDetails} />
           </div>
           <ul className="ul-cards">
             {recentMatches.map(each => (
@@ -165,6 +162,8 @@ class TeamMatches extends Component {
         return this.isFailedView()
       case apiContentResponse.success:
         return this.successView()
+      default:
+        return this.loadingView()
     }
   }
 

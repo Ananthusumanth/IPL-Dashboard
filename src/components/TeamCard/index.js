@@ -7,12 +7,12 @@ const TeamCard = props => {
   const {id, name, teamImageUrl} = teamList
 
   return (
-    <Link to={`/team-matches/${id}`}>
-      <li className="list-container">
+    <li>
+      <Link to={`/team-matches/${id}`} className="list-container">
         <img src={teamImageUrl} alt={name} className="teamName" />
         <p>{name}</p>
-      </li>
-    </Link>
+      </Link>
+    </li>
   )
 }
 export default TeamCard
