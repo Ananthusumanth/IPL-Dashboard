@@ -23,15 +23,15 @@ class Home extends Component {
   teamsApiUrl = async () => {
     const response = await fetch('https://apis.ccbp.in/ipl')
     if (response.ok) {
-      const data = await response.json()
-      const {teams} = data
-      console.log(teams)
-      const getIplTeams = teams.map(each => ({
-        id: each.id,
-        name: each.name,
-        teamImageUrl: each.team_image_url,
-      }))
-      this.setState({blogList: getIplTeams, status: apiContentResponse.success})
+    const data = await response.json()
+    const {teams} = data
+    // console.log(teams)
+    const getIplTeams = teams.map(each => ({
+      id: each.id,
+      name: each.name,
+      teamImageUrl: each.team_image_url,
+    }))
+    this.setState({blogList: getIplTeams, status: apiContentResponse.success})
     } else {
       this.setState({status: apiContentResponse.isFailed})
     }
