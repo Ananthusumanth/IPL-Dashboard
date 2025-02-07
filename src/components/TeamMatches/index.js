@@ -1,7 +1,7 @@
 // Write your code here
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
-import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
+import {PieChart, Pie, Legend, Cell} from 'recharts'
 import {Link} from 'react-router-dom'
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
@@ -57,7 +57,7 @@ class TeamMatches extends Component {
 
   loadingView = () => (
     <div className="home-container">
-      <div testid="loader" className="loader">
+      <div className="loader" data-testid="loader">
         <Loader type="Oval" color="#00BFFF" height={50} width={50} />
       </div>
     </div>

@@ -11,21 +11,19 @@ const MatchCard = props => {
     result: recentMatches.result,
   }
 
-  const {competingTeam, competingTeamLogo, result, id, matchStatus} =
-    updatesDetails
-
-  const classNamecolor = matchStatus === 'Lost' ? 'red-color' : 'green-color'
+  const classNamecolor =
+    updatesDetails.matchStatus === 'Lost' ? 'red-color' : 'green-color'
 
   return (
-    <li className="recent-list-container" key={id}>
+    <li className="recent-list-container" key={updatesDetails.id}>
       <img
-        src={competingTeamLogo}
-        alt={`competing team ${competingTeam}`}
+        src={updatesDetails.competingTeamLogo}
+        alt={`competing team ${updatesDetails.competingTeam}`}
         className="Recentteamlogo"
       />
-      <p>{competingTeam}</p>
-      <p>{result}</p>
-      <p className={classNamecolor}>{matchStatus}</p>
+      <p>{updatesDetails.competingTeam}</p>
+      <p>{updatesDetails.result}</p>
+      <p className={classNamecolor}>{updatesDetails.matchStatus}</p>
     </li>
   )
 }

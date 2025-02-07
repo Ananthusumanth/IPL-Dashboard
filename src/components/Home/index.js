@@ -23,15 +23,13 @@ class Home extends Component {
   teamsApiUrl = async () => {
     const response = await fetch('https://apis.ccbp.in/ipl')
     if (response.ok) {
-    const data = await response.json()
-    const {teams} = data
-    // console.log(teams)
-    const getIplTeams = teams.map(each => ({
-      id: each.id,
-      name: each.name,
-      teamImageUrl: each.team_image_url,
-    }))
-    this.setState({blogList: getIplTeams, status: apiContentResponse.success})
+      const data = await response.json()
+      const getIplTeams = data.teams.map(each => ({
+        id: each.id,
+        name: each.name,
+        teamImageUrl: each.team_image_url,
+      }))
+      this.setState({blogList: getIplTeams, status: apiContentResponse.success})
     } else {
       this.setState({status: apiContentResponse.isFailed})
     }
@@ -39,7 +37,7 @@ class Home extends Component {
 
   loadingView = () => (
     <div className="home-container">
-      <div testid="loader" className="loader">
+      <div className="loader" data-testid="loader">
         <Loader type="Oval" color="#00BFFF" height={50} width={50} />
       </div>
     </div>
